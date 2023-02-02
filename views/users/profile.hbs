@@ -1,8 +1,8 @@
 <div class=" mx-auto" style="max-width: 90%;">
   <div class="card mb-3 mx-auto">
     <div class="row g-0">
-      <div class="col-md-4">
-        <img src="{{user.image}}" class="img-fluid rounded-start" alt="...">
+      <div class="col-md-4 align-self-center">
+        <img src="{{user.image}}" class="img-fluid rounded-start ms-4" alt="...">
       </div>
       <div class="col-md-8">
         <div class="card-body">
@@ -37,10 +37,10 @@
           {{#each user.Followings}}
           <a href="/users/{{this.id}}">
             {{#if this.image}}
-            <img src="{{this.image}}" width="40px" height="40px" style="transition: opacity 0.5s; opacity:0;"
+            <img src="{{this.image}}" width="40px" height="40px" style="transition: opacity 0.5s; opacity:0; margin-right:2px;"
               onload="this.style.opacity=1;" />
             {{else}}
-            <img src="https://fakeimg.pl/40x40/" width="40px" height="40px" />
+            <img src="https://fakeimg.pl/40x40/" width="40px" height="40px" style="margin-right:2px;"/>
             {{/if}}</a>
           {{/each }}
         </div>
@@ -53,10 +53,10 @@
           {{#each user.Followers}}
           <a href="/users/{{this.id}}">
             {{#if this.image}}
-            <img src="{{this.image}}" width="40px" height="40px" style="transition: opacity 0.5s; opacity:0;"
-              onload="this.style.opacity=1;" />
+            <img src="{{this.image}}" width="40px" height="40px" style="transition: opacity 0.5s; opacity:0; margin-right:2px;"
+              onload="this.style.opacity=1; " />
             {{else}}
-            <img src="https://fakeimg.pl/40x40/" width="40px" height="40px" />
+            <img src="https://fakeimg.pl/40x40/" width="40px" height="40px" style="margin-right:2px;"/>
             {{/if}}</a>
           {{/each }}
         </div>
@@ -71,10 +71,10 @@
           {{#each user.Comments}}
           <a href="/restaurants/{{this.Restaurant.id}}">
             {{#if this.Restaurant.image}}
-            <img src="{{this.Restaurant.image}}" width="40px" height="40px" style="transition: opacity 0.5s; opacity:0;"
+            <img src="{{this.Restaurant.image}}" width="40px" height="40px" style="transition: opacity 0.5s; opacity:0; margin-right:2px;"
               onload="this.style.opacity=1;" />
             {{else}}
-            <img src="https://fakeimg.pl/40x40/" width="40px" height="40px" />
+            <img src="https://fakeimg.pl/40x40/" width="40px" height="40px" style="margin-right:2px;"/>
             {{/if}}</a>
           {{/each }}
         </div>
@@ -87,10 +87,10 @@
           {{#each user.FavoritedRestaurants}}
           <a href="/restaurants/{{this.id}}">
             {{#if this.image}}
-            <img src="{{this.image}}" width="40px" height="40px" style="transition: opacity 0.5s; opacity:0;"
+            <img src="{{this.image}}" width="40px" height="40px" style="transition: opacity 0.5s; opacity:0; margin-right:2px;"
               onload="this.style.opacity=1;" />
             {{else}}
-            <img src="https://fakeimg.pl/40x40/" width="40px" height="40px" />
+            <img src="https://fakeimg.pl/40x40/" width="40px" height="40px" style="margin-right:2px;" />
             {{/if}}</a>
           {{/each }}
         </div>

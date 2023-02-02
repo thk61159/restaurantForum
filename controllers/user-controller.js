@@ -1,6 +1,6 @@
 const bcrypt = require('bcryptjs')
 const { localFileHandler } = require('../helpers/file-helpers') // 照片上傳
-const { User, Restaurant, Favorite, Like, Followship } = require('../models')
+const { User, Restaurant, Favorite, Like, Followship, Comment } = require('../models')
 // const { User } = db
 const userController = {
   signUpPage: (req, res) => {
@@ -42,9 +42,25 @@ const userController = {
   },
   getUser: (req, res, next) => {
     const { id } = req.params
-    return User.findByPk(id, { raw: true })
+    return User.findByPk(id, {
+      include: [
+        { model: Restaurant, as: 'FavoritedRestaurants' },
+        { model: User, as: 'Followers' },
+        { model: User, as: 'Followings' },
+        {
+          model: Comment,
+          include: Restaurant
+          // attributes: ['Comment.Restaurant.id'],
+          // group: ['Comment.Restaurant.id']
+        } //  qurey anthor table in include table
+      ]
+    })
       .then(user => {
-        return res.render('users/profile', { user })
+        const isFollowed = req.user.Followings.some(f => f.id === user.id)
+        res.render('users/profile', {
+          user: user.toJSON(),
+          isFollowed
+        })
       })
       .catch(err => next(err))
   },
