@@ -12,7 +12,8 @@ module.exports = {
           is_admin: true,
           name: 'root',
           created_at: new Date(),
-          updated_at: new Date()
+          updated_at: new Date(),
+          image: `https://loremflickr.com/320/240/person/?lock=${Math.floor(Math.random() * 100)}`
         },
         {
           email: 'user1@example.com',
@@ -20,7 +21,8 @@ module.exports = {
           is_admin: false,
           name: 'user1',
           created_at: new Date(),
-          updated_at: new Date()
+          updated_at: new Date(),
+          image: `https://loremflickr.com/320/240/person/?lock=${Math.floor(Math.random() * 100)}`
         },
         {
           email: 'user2@example.com',

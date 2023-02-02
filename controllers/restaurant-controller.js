@@ -1,4 +1,4 @@
-const { Category, Restaurant, Comment, User } = require('../models')
+const { Category, Restaurant, Comment, User, Favorite } = require('../models')
 const { getOffset, getPagination } = require('../helpers/pagination-helper')
 const restaurantController = {
   getRestaurants: (req, res, next) => {
@@ -118,6 +118,7 @@ const restaurantController = {
         return restaurants
           .map(restaurant => ({
             ...restaurant.toJSON(),
+            description: restaurant.description.substring(0, 50),
             favoritedCount: restaurant.FavoritedUsers.length,
             // 因為測試檔不知道什麼一定要這樣寫
             isFavorited: req.user && req.user.FavoritedRestaurants.some(
