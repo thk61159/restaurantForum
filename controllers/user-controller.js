@@ -56,7 +56,9 @@ const userController = {
       ]
     })
       .then(user => {
-        const isFollowed = req.user.Followings.some(f => f.id === user.id)
+        const isFollowed = req.user && req.user.Followings.some(
+          f => f.id === user.id
+        )
         res.render('users/profile', {
           user: user.toJSON(),
           isFollowed
