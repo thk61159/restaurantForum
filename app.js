@@ -9,15 +9,17 @@ const passport = require('./config/passport')
 const { getUser } = require('./helpers/auth-helpers')
 const handlebarsHelpers = require('./helpers/handlebars-helpers')
 
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config()
+}
+
 const app = express()
 const port = process.env.PORT || 3000
-const SESSION_SECRET = 'secret'
-
 app.engine('hbs', handlebars({ extname: '.hbs', helpers: handlebarsHelpers }))
 app.set('view engine', 'hbs')
 app.use(express.urlencoded({ extended: true }))
 app.use(
-  session({ secret: SESSION_SECRET, resave: false, saveUninitialized: false })
+  session({ secret: process.env.SESSION_SECRET, resave: false, saveUninitialized: false })
 )
 app.use(passport.initialize())
 app.use(passport.session())

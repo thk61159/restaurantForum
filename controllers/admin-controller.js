@@ -1,5 +1,5 @@
 const { Restaurant, User, Category } = require('../models')
-const { localFileHandler } = require('../helpers/file-helpers')// 照片上傳
+const { imgurFileHandler } = require('../helpers/file-helpers')// 照片上傳
 const adminController = {
   getRestaurants: (req, res, next) => {
     Restaurant.findAll({
@@ -23,8 +23,9 @@ const adminController = {
     const { name, tel, adress, openingHours, description, categoryId } = req.body
     if (!name) throw new Error('Restaurant name is required!')
     const { file } = req
-    localFileHandler(file)
+    imgurFileHandler(file)
       .then(filePath => {
+        console.log(filePath)
         Restaurant.create({
           name,
           tel,
@@ -67,10 +68,11 @@ const adminController = {
     if (!name) throw new Error('Restaurant name is required!')
     const { file } = req
     Promise.all(
-      [Restaurant.findByPk(id), localFileHandler(file)]
+      [Restaurant.findByPk(id), imgurFileHandler(file)]
       // 需要修改資料不能使用{ raw: true }
     )
       .then(([restaurant, filePath]) => {
+        console.log(filePath)
         if (!restaurant) throw new Error("Restaurant didn't exist!")
         return restaurant.update({
           name,
