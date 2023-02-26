@@ -1,5 +1,5 @@
 const bcrypt = require('bcryptjs')
-const { localFileHandler } = require('../helpers/file-helpers') // 照片上傳
+const { imgurFileHandler } = require('../helpers/file-helpers') // 照片上傳
 const { User, Restaurant, Favorite, Like, Followship, Comment } = require('../models')
 // const { User } = db
 const userController = {
@@ -79,7 +79,7 @@ const userController = {
     const { id } = req.params
     if (!name) throw new Error('Name is required!')
     const { file } = req
-    return Promise.all([User.findByPk(id), localFileHandler(file)])
+    return Promise.all([User.findByPk(id), imgurFileHandler(file)])
       .then(([user, filePath]) => {
         return user.update({
           name,
