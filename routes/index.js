@@ -37,7 +37,8 @@ router.post('/following/:userId', authenticated, userController.addFollowing)
 router.delete('/following/:userId', authenticated, userController.removeFollowing)
 router.get('/users/:id/edit', authenticated, userController.editUser)
 router.get('/users/:id', authenticated, userController.getUser)
-router.put('/users/:id', authenticated, upload.single('image'), userController.putUser)
+// upload.single 指上傳一個檔案
+router.put('/users/:id', authenticated, upload.single('frontEndInputName'), userController.putUser)
 router.get('/', (req, res) => { res.redirect('/restaurants') })
 router.use('/', generalErrorHandler)
 
