@@ -35,7 +35,7 @@ const userController = {
     req.flash('success_messages', '成功登入！')
     res.redirect('/restaurants')
   },
-  logout: (req, res) => {
+  logout: (req, res, next) => {
     // 這個方法會把 user id 對應的 session 清除掉，對伺服器來說 session 消失就等於是把使用者登出了
     req.logout(req.user, err => {
       if (err) return next(err)

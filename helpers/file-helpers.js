@@ -8,7 +8,7 @@ const localFileHandler = file => {
     const fileName = `upload/${file.originalname}`
     return fs.promises
       .readFile(file.path)
-      .then(data => fs.promises.writeFile(fileName, data))
+      .then(data => fs.promises.writeFile(fileName, data))//加buffer data換成圖
       .then(() => resolve(`/${fileName}`))
       .catch(err => reject(err))
   })
