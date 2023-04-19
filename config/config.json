@@ -1,19 +1,19 @@
 {
-  "development": {
-    "username": "root",
-    "password": "00000000",
-    "database": "forum",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
-  },
-  "production": {
+	"development": {
+		"username": "root",
+		"password": "password",
+		"database": "forum",
+		"host": "127.0.0.1",
+		"dialect": "postgres"
+	},
+	"production": {
 		"use_env_variable": "CLEARDB_DATABASE_URL"
 	},
-  "travis": {
-    "username": "travis",
-    "database": "forum",
-    "host": "127.0.0.1",
-    "dialect": "mysql",
-    "logging": false
-  }
+	"travis": {
+		"username": "travis",
+		"database": "forum",
+		"host": "127.0.0.1",
+		"dialect": "mysql",
+		"logging": false
+	}
 }

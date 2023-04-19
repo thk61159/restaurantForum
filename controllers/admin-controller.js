@@ -25,7 +25,6 @@ const adminController = {
     const { file } = req
     imgurFileHandler(file)
       .then(filePath => {
-        console.log(filePath)
         Restaurant.create({
           name,
           tel,
@@ -72,7 +71,6 @@ const adminController = {
       // 需要修改資料不能使用{ raw: true }
     )
       .then(([restaurant, filePath]) => {
-        console.log(filePath)
         if (!restaurant) throw new Error("Restaurant didn't exist!")
         return restaurant.update({
           name,

@@ -23,12 +23,6 @@ const restaurantController = {
       })
     ])
       .then(([restaurants, categories]) => {
-        // map後的()是IIFE嗎？不是！！是省略一個大括號，並用括號區分是在return object
-        // const data = restaurants.rows.map(r => ({
-        // ...r,
-        // description: r.description.substring(0, 50),
-        // isFavorite: req.user && req.user.FavoritedRestaurants.map(fr => fr.id).includes(r.id)
-        // &&(logical operator) if the left hand side is true, then evaluates as the right hand side
         const favoritedRestaurantsId = req.user && req.user.FavoritedRestaurants.map(fr => fr.id)
         const likedRestaurantsId = req.user && req.user.LikedRestaurants.map(fr => fr.id)
         const data = restaurants.rows.map(r => ({
