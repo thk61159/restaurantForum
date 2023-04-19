@@ -12,10 +12,6 @@
 		"migrate": "npx sequelize db:migrate",
 		"dmigrate": "npx sequelize db:migrate:undo:all"
 	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/ALPHACamp/forum-express-grading.git"
-	},
 	"dependencies": {
 		"bcryptjs": "^2.4.3",
 		"connect-flash": "^0.1.1",
@@ -50,6 +46,6 @@
 		"supertest": "^6.1.6"
 	},
 	"engines": {
-		"node": ">=18<19"
+		"node": ">=14.21.3 <19"
 	}
 }
